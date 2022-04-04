@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lever : MonoBehaviour
+public class PlateController : MonoBehaviour
 {
-    public Transform lever;
-    [SerializeField]
+    public int platesRequired;
+    int platesOn = 0;
     bool on = true;
     bool transitioning = false;
     public Transform platform;
@@ -13,21 +13,11 @@ public class Lever : MonoBehaviour
     public Transform end;
     public float endTime;
     float timePassed = 0;
-    public float delay;
-    float delayTime = 0;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (transitioning)
         {
-            delayTime -= Time.deltaTime;
             timePassed += Time.deltaTime;
             float amount = timePassed / endTime;
             if (amount < 1)
@@ -49,29 +39,33 @@ public class Lever : MonoBehaviour
         }
     }
 
-    public void ToggleLever()
+    public void TogglePlate(bool plateOn)
     {
-        if (delayTime > 0)
+        if (plateOn)
         {
-            return;
-        }
-        if (transitioning)
-        {
-            timePassed = endTime - timePassed;
-        }
-        if (on)
-        {
-            lever.Rotate(new Vector3(0, 0, -90));
-            on = false;
-            transitioning = true;
-            delayTime = delay;
+            platesOn++;
+            if (platesOn == platesRequired)
+            {
+                if (transitioning)
+                {
+                    timePassed = endTime - timePassed;
+                }
+                transitioning = true;
+                on = false;
+            }
         }
         else
         {
-            lever.Rotate(new Vector3(0, 0, 90));
-            on = true;
-            transitioning = true;
-            delayTime = delay;
+            if (platesOn == platesRequired)
+            {
+                if (transitioning)
+                {
+                    timePassed = endTime - timePassed;
+                }
+                transitioning = true;
+                on = true;
+            }
+            platesOn--;
         }
     }
 }

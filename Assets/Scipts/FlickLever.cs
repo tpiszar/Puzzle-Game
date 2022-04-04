@@ -29,10 +29,13 @@ public class FlickLever : MonoBehaviour
                 facing = Vector2.left;
             }
             RaycastHit2D ray = Physics2D.Raycast(transform.position, facing, range, mask);
-
             if (ray)
             {
-                ray.rigidbody.gameObject.GetComponent<Lever>().ToggleLever();
+                Lever[] levers = ray.rigidbody.gameObject.GetComponents<Lever>();
+                foreach (Lever lever in levers)
+                {
+                    lever.ToggleLever();
+                }
             }
         }
     }

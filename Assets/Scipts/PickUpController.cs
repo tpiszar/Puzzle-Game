@@ -46,7 +46,14 @@ public class PickUpController : MonoBehaviour
                         }
                     }
                 }
-                hold = true;
+                foreach (PickUp player in players)
+                {
+                    if (player.held)
+                    {
+                        hold = true;
+                        break;
+                    }
+                }
             }
         }
     }

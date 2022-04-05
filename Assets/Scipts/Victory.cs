@@ -5,13 +5,19 @@ using UnityEngine;
 public class Victory : MonoBehaviour
 {
     public Animation endFade;
-    private void OnTriggerEnter(Collider other)
+    public UnityEngine.UI.Button volBtn;
+    public UI vol;
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("Collides");
-        Movement player = other.GetComponent<Movement>();
+        Movement player = collision.GetComponent<Movement>();
         if (player)
         {
-            print("Victory");
+            if (vol.volume)
+            {
+                vol.ToggleVolume();
+            }
+            volBtn.enabled = false;
             endFade.Play();
         }
     }

@@ -158,8 +158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 571, y: 86}
-  m_SizeDelta: {x: 529.86, y: 31.949997}
+  m_AnchoredPosition: {x: 535.22, y: 67}
+  m_SizeDelta: {x: 624.05, y: 101.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &93570045
 Animator:
@@ -200,8 +200,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Flicking levers cause platforms to move. Left click when facing a nearby
-    lever to activate it.
+  m_text: Flicking levers cause platforms to move, flicking again brings them back.
+    Left click when facing a nearby lever to activate it.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1207,6 +1207,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2077876916028779915, guid: 0c3d4f90158595e46a5572c3f2a0e30e, type: 3}
       propertyPath: controller
+      value: 
+      objectReference: {fileID: 1130650358}
+    - target: {fileID: 2077876916028779915, guid: 0c3d4f90158595e46a5572c3f2a0e30e, type: 3}
+      propertyPath: controllers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077876916028779915, guid: 0c3d4f90158595e46a5572c3f2a0e30e, type: 3}
+      propertyPath: controllers.Array.data[0]
       value: 
       objectReference: {fileID: 1130650358}
     m_RemovedComponents: []
@@ -11577,7 +11585,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6130048389082686913}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5177563, y: -0.13481076, z: 0}
+  m_LocalPosition: {x: -0.5177563, y: -0.13481076, z: 1}
   m_LocalScale: {x: 0.07979798, y: 0.21251531, z: 1}
   m_Children:
   - {fileID: 6130048390941203622}

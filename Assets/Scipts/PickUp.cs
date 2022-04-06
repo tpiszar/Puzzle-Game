@@ -64,8 +64,6 @@ public class PickUp : MonoBehaviour
         RaycastHit2D above = Physics2D.Raycast(transform.position, Vector2.up, 2.2f, aboveMask);
         if (hits[1].collider != null && above.collider == null)
         {
-            holding = true;
-            pickContr.pickingUp = true;
             if (hits[0].transform.name == transform.name)
             {
                 heldPlayer = hits[1].transform;
@@ -74,17 +72,23 @@ public class PickUp : MonoBehaviour
             {
                 heldPlayer = hits[0].transform;
             }
-            start = heldPlayer.position;
-            heldPlayer.GetComponentInChildren<Animator>().SetFloat("Speed", 0f);
-            heldPlayer.GetComponentInChildren<Animator>().SetBool("Jump", false);
-            heldPlayer.GetComponentInChildren<Animator>().Play("Idle");
-            heldPlayer.GetComponent<PickUp>().held = true;
-            heldPlayer.GetComponent<Movement>().enabled = false;
-            heldPlayer.GetComponent<Collider2D>().enabled = false;
-            heldPlayer.GetComponent<CharacterController2D>().enabled = false;
-            heldPlayer.GetComponent<Rigidbody2D>().simulated = false;
-            heldPlayer.parent = this.transform;
-            heldCollider.enabled = true;
+            PickUp heldPick = heldPlayer.GetComponent<PickUp>();
+            if (!heldPick.holding)
+            {
+                holding = true;
+                pickContr.pickingUp = true;
+                start = heldPlayer.position;
+                heldPlayer.GetComponentInChildren<Animator>().SetFloat("Speed", 0f);
+                heldPlayer.GetComponentInChildren<Animator>().SetBool("Jump", false);
+                heldPlayer.GetComponentInChildren<Animator>().Play("Idle");
+                heldPick.held = true;
+                heldPlayer.GetComponent<Movement>().enabled = false;
+                heldPlayer.GetComponent<Collider2D>().enabled = false;
+                heldPlayer.GetComponent<CharacterController2D>().enabled = false;
+                heldPlayer.GetComponent<Rigidbody2D>().simulated = false;
+                heldPlayer.parent = this.transform;
+                heldCollider.enabled = true;
+            }
         }
     }
 

@@ -7,7 +7,7 @@ public class PressurePlate : MonoBehaviour
     Vector3 upPos;
     Vector3 downPos;
     public Transform plate;
-    public PlateController controller;
+    public PlateController[] controllers;
     bool on = false;
 
     // Start is called before the first frame update
@@ -26,7 +26,10 @@ public class PressurePlate : MonoBehaviour
             if (!on)
             {
                 plate.position = downPos;
-                controller.TogglePlate(true);
+                foreach (PlateController contr in controllers)
+                {
+                    contr.TogglePlate(true);
+                }
                 on = true;
             }
         }
@@ -40,7 +43,10 @@ public class PressurePlate : MonoBehaviour
             if (on)
             {
                 plate.position = upPos;
-                controller.TogglePlate(false);
+                foreach (PlateController contr in controllers)
+                {
+                    contr.TogglePlate(false);
+                }
                 on = false;
             }
         }

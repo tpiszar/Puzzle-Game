@@ -13,6 +13,7 @@ public class PickUpController : MonoBehaviour
         {
             if (hold && !pickingUp)
             {
+                PlayerAudio.playThrow = true;
                 foreach (PickUp player in players)
                 {
                     if (player.holding)
@@ -50,6 +51,7 @@ public class PickUpController : MonoBehaviour
                 {
                     if (player.held)
                     {
+                        PlayerAudio.playPick = true;
                         hold = true;
                         break;
                     }

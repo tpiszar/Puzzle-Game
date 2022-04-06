@@ -7,6 +7,7 @@ public class Victory : MonoBehaviour
     public Animation endFade;
     public UnityEngine.UI.Button volBtn;
     public UI vol;
+    public AudioSource endSnd;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -18,6 +19,7 @@ public class Victory : MonoBehaviour
                 vol.ToggleVolume();
             }
             volBtn.enabled = false;
+            endSnd.Play();
             endFade.Play();
         }
     }

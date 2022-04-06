@@ -16,6 +16,8 @@ public class Lever : MonoBehaviour
     public float delay;
     float delayTime = 0;
 
+    public AudioSource flickSnd;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +56,10 @@ public class Lever : MonoBehaviour
         if (delayTime > 0)
         {
             return;
+        }
+        if (flickSnd != null)
+        {
+            flickSnd.Play();
         }
         if (transitioning)
         {

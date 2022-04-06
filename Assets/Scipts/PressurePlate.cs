@@ -10,6 +10,8 @@ public class PressurePlate : MonoBehaviour
     public PlateController[] controllers;
     bool on = false;
 
+    public AudioSource pressSnd;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,7 @@ public class PressurePlate : MonoBehaviour
         {
             if (!on)
             {
+                pressSnd.Play();
                 plate.position = downPos;
                 foreach (PlateController contr in controllers)
                 {

@@ -5,14 +5,28 @@ using UnityEngine;
 public class PlayerAudio : MonoBehaviour
 {
     public static bool playJump = false;
-    public AudioSource jump;
+    public static bool playThrow = false;
+    public static bool playPick = false;
+    public AudioSource jumpSnd;
+    public AudioSource throwSnd;
+    public AudioSource pickSnd;
 
     void Update()
     {   
         if (playJump)
         {
-            jump.Play();
+            jumpSnd.Play();
             playJump = false;
+        }
+        if (playThrow)
+        {
+            throwSnd.Play();
+            playThrow = false;
+        }
+        if (playPick)
+        {
+            pickSnd.Play();
+            playPick = false;
         }
     }
 }

@@ -13,8 +13,8 @@ public class Music : MonoBehaviour
     void Start()
     {
         music1.Play();
-        length1 = music1.clip.length;
-        length2 = music2.clip.length;
+        length1 = music1.clip.length - 1;
+        length2 = music2.clip.length + 1;
         DontDestroyOnLoad(this.gameObject);
         Invoke("SwitchMusic", length1);
     }

@@ -38,6 +38,7 @@ public class Movement : MonoBehaviour
             if (jump)
             {
                 animator.Play("Jump");
+                PlayerAudio.playJump = true;
             }
         }
         controller.Move(move * speed * Time.deltaTime, jump);
